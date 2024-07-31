@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Http\Requests\StoreProjectRequest;
@@ -32,7 +33,9 @@ class ProjectController extends Controller
         //
         $project = new Project();
         $types = Type::all();
-        return view('admin.projects.create', compact('project', 'types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -45,6 +48,8 @@ class ProjectController extends Controller
         $data["author"] = Auth::user()->name;
         $data["updated_on"] = Carbon::now();
         $newProject = Project::create($data);
+        $newProject->technologies()->sync($data['technologies']);
+
 
         return redirect()->route('admin.projects.show', $newProject);
     }
@@ -67,7 +72,8 @@ class ProjectController extends Controller
         //
 
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -78,7 +84,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['updated_on'] = Carbon::now();
 
+
+
         $project->update($data);
+        $project->technologies()->sync($data['technologies']);
 
         return redirect()->route('admin.projects.show', $project);
     }

@@ -28,6 +28,9 @@
                     <input type="text" class="form-control" id="description" name="description" value="{{ $project->description }}">
                 </div>
 
+
+
+
                 <div class="mb-3">
                     <label for="type_id" class="form-label">Project Type</label>
                     <select class="form-select" id="type_id" name="type_id">
@@ -36,6 +39,35 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="mb-3">
+                    <label for="technology_id" class="form-label">Technology</label>
+
+
+
+                        @foreach($technologies as $technology)
+
+                        <input name="technologies[]" type="checkbox" class="btn-check" id="tech-check-{{ $technology->id}}" autocomplete="off" value="{{ $technology->id }}"
+
+
+                        >
+
+
+
+                        <label class="btn btn-outline-primary" for="tech-check-{{ $technology->id}}">
+
+                            {{ $technology->name }}
+
+                        </label>
+                        @endforeach
+
+
+                </div>
+
+
+
+
+
 
                 <div class="mb-3">
                     <label for="url" class="form-label">Project URL</label>das

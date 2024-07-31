@@ -50,6 +50,22 @@
             </div>
 
             <div class="mb-3">
+                <label for="technology_id" class="form-label">Technology</label>
+
+
+                    @foreach($technologies as $technology)
+
+                    <input name="technologies[]" type="checkbox" class="btn-check" id="tech-check-{{ $technology->id}}" autocomplete="off" value="{{ $technology->id }}">
+                    <label class="btn btn-outline-primary" for="tech-check-{{ $technology->id}}">
+
+                        {{ $technology->name }}
+
+                    </label>
+                    @endforeach
+
+            </div>
+
+            <div class="mb-3">
                 <label for="programming_language" class="form-label">Programming Language</label>
                 <input type="text" class="form-control" id="programming_language" name="programming_language" value="{{ old('programming_language') }}">
             </div>

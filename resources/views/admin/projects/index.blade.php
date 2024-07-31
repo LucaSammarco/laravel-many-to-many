@@ -35,7 +35,7 @@
                         @forelse ($project->technologies as $technology)
                             {{ $technology->name }}
                         @empty
-                            No technologies found.
+                            No technologies.
                         @endforelse
 
 

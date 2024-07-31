@@ -13,6 +13,12 @@
                     <p>{{ $project->description }}</p>
                     <p>{{ $project->url }}</p>
                     <p>{{ $project->programming_language }}</p>
+                    <p>{{ $project->type->name }}</p>
+                    <p>@forelse ($project->technologies as $technology)
+                        {{ $technology->name }}
+                    @empty
+                        No technologies.
+                    @endforelse</p>
                     <p>{{ $project->updated_at }}</p>
                 </div>
             </div>
