@@ -14,6 +14,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Type</th>
+                    <th>Technology</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>URL</th>
@@ -29,6 +30,18 @@
                 <tr>
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->type->name }}</td>
+
+                    <td>
+                        @forelse ($project->technologies as $technology)
+                            {{ $technology->name }}
+                        @empty
+                            No technologies found.
+                        @endforelse
+
+
+                   </td>
+
+
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->url }}</td>
