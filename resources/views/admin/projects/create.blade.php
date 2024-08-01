@@ -23,7 +23,7 @@
 
 
 
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -72,8 +72,9 @@
 
             <div class="mb-3">
                 <label for="updated_on" class="form-label">Updated On</label>
-                <input type="date" class="form-control" id="updated_on" name="updated_on" value="{{ old('updated_on') }}">
+                <input type="file" class="form-control" id="updated_on" name="updated_on" value="{{ $project->updated_on }}">
             </div>
+
 
             <div class="mb-3">
                 <input type="submit" class="btn btn-primary" value="Submit">

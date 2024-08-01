@@ -28,7 +28,8 @@ class StoreProjectRequest extends FormRequest
             'url' => 'required|url',
             'programming_language' => 'required|string|max:255',
             'type_id' => 'required|exists:types,id',
-            'technologies' => 'required|array|exists:technologies,id'
+            'technologies' => 'required|array|exists:technologies,id',
+            'updated_on' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

@@ -19,7 +19,7 @@
                     <th>Description</th>
                     <th>URL</th>
                     <th>Programming Language</th>
-                    <th>Updated On</th>
+                    <th>Img</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -46,7 +46,10 @@
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->url }}</td>
                     <td>{{ $project->programming_language }}</td>
-                    <td>{{ $project->updated_at }}</td>
+                    <td> <div class="image">
+                        <img src="{{ asset('storage/' . $project->updated_on) }}" alt="" class="img-fluid w-25">
+                    </div>
+                    </td>
                     <td class="">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-info me-1">Show</a>

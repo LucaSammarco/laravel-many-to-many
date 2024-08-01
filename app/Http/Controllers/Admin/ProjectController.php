@@ -9,6 +9,8 @@ use App\Models\Type;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 class ProjectController extends Controller
@@ -43,10 +45,18 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // dd($request->all());
         $data = $request->validated();
 
+        //prendo un file e lo metto in un posto storage/imgs/projects
+        //salva nel db link al file locale
+
+        $img_path = Storage::put('uploads/projects', $data['updated_on']);
+
+        $data['updated_on'] = $img_path;
+
         $data["author"] = Auth::user()->name;
-        $data["updated_on"] = Carbon::now();
+
         $newProject = Project::create($data);
         $newProject->technologies()->sync($data['technologies']);
 

@@ -15,7 +15,7 @@
         @endif
 
         <div class="col-md-8">
-            <form action="{{ route('admin.projects.update', $project) }}" method="POST">
+            <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data>
                 @csrf
                 @method('PUT')
 
@@ -81,7 +81,7 @@
 
                 <div class="mb-3">
                     <label for="updated_on" class="form-label">Updated On</label>
-                    <input type="date" class="form-control" id="updated_on" name="updated_on" value="{{ $project->updated_on }}">
+                    <input type="file" class="form-control" id="updated_on" name="updated_on" value="{{ $project->updated_on }}">
                 </div>
 
                 <div class="mb-3">

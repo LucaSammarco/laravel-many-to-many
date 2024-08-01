@@ -19,7 +19,9 @@
                     @empty
                         No technologies.
                     @endforelse</p>
-                    <p>{{ $project->updated_at }}</p>
+                    <div class="image">
+                        <img src="{{ asset('storage/' . $project->updated_on) }}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
